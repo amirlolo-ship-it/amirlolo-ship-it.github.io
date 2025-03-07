@@ -1,6 +1,8 @@
 :root {
   --primary-color: #2c3e50;
   --secondary-color: #3498db;
+  --light-blue: #e6f0ff; /* آبی بسیار کم‌رنگ نزدیک به سفید */
+  --medium-blue: #a6d5ff; /* آبی متوسط برای باکس‌ها */
   --text-color: #333333;
   --light-bg: #f5f6fa;
   --white: #ffffff;
@@ -20,7 +22,7 @@ body {
   font-family: "Vazirmatn", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background-color: var(--white);
+  background-color: var(--light-blue); /* تغییر پس‌زمینه به آبی کم‌رنگ */
   text-align: right;
 }
 
@@ -39,7 +41,6 @@ nav {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   padding: 0.5rem 0;
-  border-radius: 0 0 15px 15px;
 }
 
 .nav-content {
@@ -47,6 +48,21 @@ nav {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  gap: 1.5rem;
+  flex-direction: row-reverse;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
   gap: 1.5rem;
   flex-direction: row-reverse;
 }
@@ -59,6 +75,7 @@ nav {
   border-radius: 8px;
   transition: all 0.3s ease;
   font-size: 0.9rem;
+  background-color: var(--medium-blue); /* تغییر رنگ باکس ناوبری به آبی متوسط */
 }
 
 .nav-link:hover {
@@ -66,6 +83,46 @@ nav {
   background-color: var(--secondary-color);
   box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
   transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.3rem 0;
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .nav-content {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--white);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* Hero Section */
@@ -77,16 +134,16 @@ nav {
   background: linear-gradient(
       135deg,
       rgba(44, 62, 80, 0.9),
-      /* رنگ اول با شفافیت */ rgba(52, 152, 219, 0.9) /* رنگ دوم با شفافیت */
+      rgba(52, 152, 219, 0.9)
     ),
-    url("javad haan.jpeg"); /* تصویر پس‌زمینه */
-  background-size: cover; /* تصویر کل صفحه را پوشش دهد */
-  background-position: center; /* تصویر در مرکز قرار گیرد */
-  background-repeat: no-repeat; /* تصویر تکرار نشود */
+    url("javad haan.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--white);
   text-align: center;
   position: relative;
-  overflow: hidden; /* جلوگیری از بزرگ شدن بیش از حد */
+  overflow: hidden;
 }
 
 .hero::before {
@@ -96,59 +153,57 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* لایه تیره برای بهبود خوانایی متن */
+  background: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
 .hero-content {
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه شفاف برای محتوا */
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  backdrop-filter: blur(10px); /* افکت بلور برای پس‌زمینه */
-  z-index: 1; /* مطمئن شوید که محتوا بالای تصویر قرار گیرد */
+  backdrop-filter: blur(10px);
+  z-index: 1;
   animation: fadeIn 1.5s ease-in-out;
 }
 
-/* تغییرات مربوط به عکس پروفایل */
-/* تغییرات مربوط به عکس پروفایل */
 .profile-image-container {
-  margin-top: 6rem; /* عکس را پایین‌تر بیاورید (مقدار را می‌توانید تنظیم کنید) */
-  margin-bottom: 2rem; /* فاصله از پایین */
+  margin-top: 6rem;
+  margin-bottom: 2rem;
   position: relative;
   display: inline-block;
-  z-index: 1; /* مطمئن شوید که تصویر پروفایل بالای پس‌زمینه قرار گیرد */
+  z-index: 1;
 }
 
 .profile-frame {
-  width: 200px; /* عرض مستطیل */
-  height: 250px; /* ارتفاع مستطیل */
-  border-radius: 15px; /* گوشه‌های گرد */
-  padding: 5px; /* کاهش padding برای کاهش حاشیه */
+  width: 200px;
+  height: 250px;
+  border-radius: 15px;
+  padding: 5px;
   background: linear-gradient(
     135deg,
     var(--primary-color),
     var(--secondary-color)
   );
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* کاهش سایه */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--white); /* کاهش حاشیه به 2px */
+  border: 2px solid var(--white);
 }
 
 .profile-image {
   width: 100%;
   height: 100%;
-  border-radius: 15px; /* گوشه‌های گرد */
-  border: 2px solid var(--white); /* کاهش حاشیه به 2px */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* کاهش سایه */
+  border-radius: 15px;
+  border: 2px solid var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  object-fit: cover; /* تصویر بدون تغییر نسبت ابعاد پوشش داده شود */
+  object-fit: cover;
 }
 
 .profile-image:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4); /* کاهش سایه در حالت hover */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes float {
@@ -193,25 +248,22 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px; /* ارتفاع نوار پیشرفت */
-  background-color: #e0e0e0; /* رنگ پس‌زمینه نوار پیشرفت */
-  z-index: 1001; /* بالاتر از نوار ناوبری */
+  height: 4px;
+  background-color: #e0e0e0;
+  z-index: 1001;
 }
 
 .scroll-progress-bar {
   height: 100%;
   width: 0;
-  background-color: #3498db; /* رنگ نوار پیشرفت */
+  background-color: #3498db;
   transition: width 0.2s ease;
 }
-
-/* بقیه استایل‌ها */
-/* بقیه استایل‌ها */
 
 /* About Section */
 .about {
   padding: 100px 0;
-  background-color: var(--light-bg);
+  background-color: var(--light-blue); /* تغییر پس‌زمینه به آبی کم‌رنگ */
 }
 
 .about-content {
@@ -233,8 +285,8 @@ nav {
 }
 
 .skill-tag {
-  background-color: var(--secondary-color);
-  color: var(--white);
+  background-color: var(--medium-blue); /* تغییر رنگ باکس مهارت به آبی متوسط */
+  color: var(--primary-color);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -243,7 +295,7 @@ nav {
 
 .skill-tag:hover {
   transform: scale(1.05);
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 /* Resume Section */
@@ -278,7 +330,7 @@ nav {
 }
 
 .timeline-content {
-  background-color: var(--white);
+  background-color: var(--medium-blue); /* تغییر رنگ باکس به آبی متوسط */
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -312,7 +364,7 @@ nav {
 .research-areas li {
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: var(--white);
+  background-color: var(--medium-blue); /* تغییر رنگ باکس به آبی متوسط */
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
@@ -325,7 +377,7 @@ nav {
 /* Contact Section */
 .contact {
   padding: 100px 0;
-  background-color: var(--light-bg);
+  background-color: var(--light-blue); /* تغییر پس‌زمینه به آبی کم‌رنگ */
 }
 
 .contact-content {
@@ -346,7 +398,7 @@ nav {
   align-items: center;
   gap: 1rem;
   flex-direction: row-reverse;
-  background-color: var(--white);
+  background-color: var(--medium-blue); /* تغییر رنگ باکس به آبی متوسط */
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
