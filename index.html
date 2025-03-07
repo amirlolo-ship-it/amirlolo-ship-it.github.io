@@ -41,11 +41,16 @@
 
     <nav>
       <div class="nav-content">
-        <a href="#contact" class="nav-link">تماس</a>
-        <a href="#publications" class="nav-link">انتشارات</a>
-        <a href="#research" class="nav-link">پژوهش</a>
-        <a href="#about" class="nav-link">درباره</a>
-        <a href="#" class="nav-link">خانه</a>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+          <a href="#contact" class="nav-link">تماس</a>
+          <a href="#publications" class="nav-link">انتشارات</a>
+          <a href="#research" class="nav-link">پژوهش</a>
+          <a href="#about" class="nav-link">درباره</a>
+          <a href="#" class="nav-link">خانه</a>
+        </div>
       </div>
     </nav>
 
@@ -71,6 +76,7 @@
         </div>
       </div>
     </section>
+
     <section id="about" class="about fade-in">
       <div class="container">
         <h2 data-aos="fade-up">درباره من</h2>
@@ -206,6 +212,11 @@
         <p>تمامی حقوق محفوظ است &copy;</p>
       </div>
     </footer>
+
+    <!-- دکمه حالت شب و روز -->
+    <button id="theme-toggle" class="theme-toggle">
+      <i class="fas fa-moon"></i>
+    </button>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script type="module" src="/script.js"></script>
