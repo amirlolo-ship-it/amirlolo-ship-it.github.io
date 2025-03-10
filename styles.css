@@ -77,21 +77,23 @@ nav {
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
-    top: 60px;
+    top: 0; /* فاصله از بالا را به ۰ تغییر دهید */
     right: 0;
     width: 100%;
-    height: calc(100vh - 60px);
-    background-color: rgba(255, 255, 255, 0.7); /* شفافیت بیشتر */
-    backdrop-filter: blur(15px); /* می‌توانید مقدار blur را کاهش دهید */
+    height: 100vh; /* ارتفاع منو را به 100vh تنظیم کنید */
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* تغییر justify-content به flex-start */
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    padding-top: 60px; /* فاصله از بالا برای نوار ناوبری */
+    margin: 0; /* حذف margin */
   }
 
   .nav-link {
@@ -1222,6 +1224,12 @@ body.dark-mode .linkedin-link {
 body.dark-mode .linkedin-link:hover {
   color: var(--secondary-color);
 }
+.book-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
 .book-link:hover {
   color: var(--secondary-color);
   transform: scale(1.05);
