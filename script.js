@@ -1,7 +1,12 @@
 // مدیریت منوی همبرگری
-document.querySelector(".menu-toggle").addEventListener("click", function () {
-  const navLinks = document.querySelector(".nav-links");
-  navLinks.classList.toggle("active");
+const navLinks = document.querySelectorAll(".nav-link");
+const checkbox = document.getElementById("menu-toggle");
+
+// بستن خودکار منوی همبرگری پس از کلیک روی یک گزینه
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    checkbox.checked = false; // چک‌باکس را غیرفعال می‌کند (منو بسته می‌شود)
+  });
 });
 
 // ردیابی اسکرول و به‌روزرسانی نوار پیشرفت
@@ -38,19 +43,17 @@ const body = document.body;
 const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") {
   body.classList.add("dark-mode");
-  themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  themeToggle.checked = true;
 }
 
 // تغییر حالت با کلیک روی دکمه
-themeToggle.addEventListener("click", () => {
+themeToggle.addEventListener("change", () => {
   body.classList.toggle("dark-mode");
   const isDarkMode = body.classList.contains("dark-mode");
 
   if (isDarkMode) {
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     localStorage.setItem("theme", "dark");
   } else {
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
     localStorage.setItem("theme", "light");
   }
 });
