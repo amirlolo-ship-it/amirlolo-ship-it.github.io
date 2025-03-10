@@ -1222,3 +1222,16 @@ body.dark-mode .linkedin-link {
 body.dark-mode .linkedin-link:hover {
   color: var(--secondary-color);
 }
+.book-link:hover {
+  color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* حالت شب */
+body.dark-mode .book-link {
+  color: var(--white);
+}
+
+body.dark-mode .book-link:hover {
+  color: var(--secondary-color);
+}
